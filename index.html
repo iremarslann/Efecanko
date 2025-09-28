@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Happy 16th Birthday Efecanko </title>
+<style>
+  :root{
+    --bg:#0f1724;
+    --card:#0b1220;
+    --text:#f7f7fb;
+    --cake-cream:#ffe9d6;
+    --cake-berry:#ff6b81;
+    --cake-choco:#6b3f2f;
+    --shadow: rgba(2,6,23,0.6);
+  }
+
+  html,body{
+    height:100%;
+    margin:0;
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    background:
+      radial-gradient(1200px 600px at 10% 10%, rgba(255,255,255,0.03), transparent 8%),
+      radial-gradient(800px 400px at 90% 90%, rgba(255,255,255,0.02), transparent 8%),
+      var(--bg);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+
+  .wrap{
+    width:100%;
+    max-width:900px;
+    text-align:center;
+  }
+
+  .stage{
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent 40%);
+    border-radius:18px;
+    padding:20px;
+    box-shadow: 0 10px 30px var(--shadow);
+    margin:0 auto;
+  }
+
+  h1{
+    margin:10px 0 8px;
+    font-size:clamp(20px,4.4vw,36px);
+    letter-spacing:1px;
+    text-transform:lowercase;
+  }
+  p.sub{
+    margin:0 0 18px;
+    opacity:0.8;
+    font-size:14px;
+  }
+
+  /* Cake area */
+  .cake-stage{
+    position:relative;
+    width:100%;
+    min-height:260px;
+    display:flex;
+    align-items:end;
+    justify-content:center;
+    padding:20px 12px 32px;
+    box-sizing:border-box;
+  }
+
+  .cake{
+    position:relative;
+    width:min(86%,520px);
+    max-width:92%;
+    transform-origin:center;
+  }
+
+  /* Candles container sits above top cake layer */
+  .candles{
+    position:absolute;
+    left:0; right:0;
+    top:0;
+    height:80px;
+    pointer-events:none;
+    display:block;
+  }
+
+  .candle{
+    position:absolute;
+    bottom:84px; /* aligns to cake top */
+    width:10px;
+    height:46px;
+    border-radius:4px;
+    background:linear-gradient(180deg,#fff 0%, #fff6ea 50%, #ffd 100%);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.15), inset 0 -6px 8px rgba(0,0,0,0.06);
+    transform-origin:bottom center;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+  }
+
+  .candle .stripe{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-image: repeating-linear-gradient(120deg, rgba(0,0,0,0.06) 0 2px, transparent 2px 6px);
+    mix-blend-mode:overlay;
+    opacity:0.55;
+    border-radius:4px;
+  }
+
+  .wick{
+    width:3px;
+    height:8px;
+    background:#2b2b2b;
+    border-radius:2px;
+    margin-top:3px;
+    z-index:3;
+  }
+
+  .flame{
+    position:absolute;
+    top:-14px;
+    width:12px;
+    height:20px;
+    pointer-events:none;
+    transform-origin:center bottom;
+    filter:drop-shadow(0 6px 8px rgba(255,160,80,0.12));
+    animation:flame-flicker 120ms infinite;
+  }
+  .flame .inner{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-40%) rotate(0deg);
+    width:10px;
+    height:12px;
+    border-radius:50% 50% 20% 20%;
+    background: radial-gradient(circle at 30% 30%, #fff6b8 0%, #ffd46a 25%, #ff8a2b 70%, transparent 100%);
+    opacity:0.95;
+    mix-blend-mode:screen;
+  }
+
+  @keyframes flame-flicker{
+    0%{ transform:translateY(0) scale(1); opacity:1;}
+    50%{ transform:translateY(-2px) scale(0.98); opacity:0.95;}
+    100%{ transform:translateY(0) scale(1); opacity:1;}
+  }
+
+  /* Cake layers */
+  .layer{
+    margin:0 auto;
+    border-radius:12px;
+    box-shadow: 0 6px 18px rgba(2,6,23,0.28);
+    position:relative;
+  }
+
+  .layer.one{
+    height:78px;
+    background: linear-gradient(180deg, var(--cake-cream), #ffe1c9);
+    width:100%;
+    max-width:520px;
+    border-radius:18px;
+    overflow:visible;
+  }
+  .layer.two{
+    height:68px;
+    background: linear-gradient(180deg,var(--cake-berry), #ff3f67);
+    width:86%;
+    margin: -18px auto 0;
+    border-radius:16px;
+  }
+  .layer.three{
+    height:56px;
+    background: linear-gradient(180deg,var(--cake-choco), #5a3327);
+    width:70%;
+    margin: -16px auto 0;
+    border-radius:14px;
+  }
+
+  /* Sprinkles / icing */
+  .sprinkles{
+    position:absolute;
+    left:0; right:0; top:6px;
+    height:20px;
+    pointer-events:none;
+    overflow:visible;
+  }
+  .sprinkle{
+    position:absolute;
+    width:6px;height:2px;border-radius:2px;transform:rotate(-20deg);
+    background:linear-gradient(90deg,#fff,#fff3);
+    opacity:0.95;
+  }
+
+  /* Message and button */
+  .message{
+    margin-top:18px;
+    font-size:clamp(20px,4vw,32px);
+    font-weight:600;
+    text-transform:lowercase;
+  }
+
+  .subaction{
+    margin-top:12px;
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  button{
+    background:linear-gradient(90deg,#ffb86b,#ff6b8c);
+    border:0;
+    color:white;
+    padding:10px 14px;
+    border-radius:10px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow: 0 8px 20px rgba(250,80,120,0.12);
+  }
+  button:active{ transform:translateY(1px); }
+
+  /* Confetti canvas */
+  canvas#confetti{
+    position:fixed;
+    left:0; top:0;
+    width:100%; height:100%;
+    pointer-events:none;
+    z-index:40;
+  }
+
+  /* responsive tweaks */
+  @media (max-width:420px){
+    .cake-stage{ padding-bottom:12px; min-height:220px;}
+    .candle{ width:8px; height:40px; bottom:72px; }
+  }
+
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="stage" role="main" aria-label="Birthday stage">
+      <h1 id="title">happy birthday efecan</h1>
+      <p class="sub">Sweet 16! </p>
+
+      <div class="cake-stage" aria-hidden="false">
+        <div class="cake" id="cake">
+          <div class="candles" id="candles" aria-hidden="true"></div>
+
+          <div class="layer one" aria-hidden="true">
+            <div class="sprinkles" id="sprinkles"></div>
+          </div>
+          <div class="layer two" aria-hidden="true"></div>
+          <div class="layer three" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div class="message" id="messageText">DILEK TUT</div>
+
+      <div class="subaction">
+        <button id="blowBtn" aria-label="Blow out candles">PASTAYI ÜFLE</button>
+        <button id="regenBtn" aria-label="Regenerate cake">BİR DAHA ÜFLE</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="confetti" width="600" height="400" aria-hidden="true"></canvas>
+
+  <!-- Birthday song -->
+  <audio id="song" loop>
+    <source src="public/happy.mp3" type="audio/mpeg">
+  </audio> 
+
+<script>
+  // ----- Config -----
+  const candleCount = 16; // 16 candles for sweet 16
+  const birthdayName = "efecan"; 
+  
+  // --------------------
+
+  // Set title/message exact text
+  document.getElementById('title').textContent = `happy birthday ${birthdayName}`;
+  document.getElementById('messageText').textContent = `dilek tut hirto`;
+
+  const candlesContainer = document.getElementById('candles');
+  const cake = document.getElementById('cake');
+  const song = document.getElementById('song');
+
+song.volume = 0.5;
+song.play().catch(()=>{});
+
+// helper: ensure music on first click
+document.body.addEventListener("click", ()=>{ if(song.paused) song.play(); }, {once:true});
+
+  // create evenly spaced candles across cake width
+  function makeCandles(n){
+    candlesContainer.innerHTML = '';
+    // use padding so edges aren't flush
+    const leftPad = 7; // percent
+    const rightPad = 7; // percent
+    for(let i=0;i<n;i++){
+      const candle = document.createElement('div');
+      candle.className = 'candle';
+      // position by percentage
+      const pct = leftPad + (i/(n-1))*(100-leftPad-rightPad);
+      candle.style.left = `calc(${pct}% - 6px)`; // adjust half-width
+      // stripes and wick/flame
+      const stripe = document.createElement('div'); stripe.className='stripe';
+      const wick = document.createElement('div'); wick.className='wick';
+      const flame = document.createElement('div'); flame.className='flame';
+      const inner = document.createElement('div'); inner.className='inner';
+      flame.appendChild(inner);
+      // slight rotation variety
+      const angle = (Math.random()-0.5)*8;
+      candle.style.transform = `rotate(${angle}deg)`;
+      candle.appendChild(stripe);
+      candle.appendChild(wick);
+      candle.appendChild(flame);
+      candlesContainer.appendChild(candle);
+    }
+  }
+
+  // sprinkle decor on top layer
+  function makeSprinkles(){
+    const spr = document.getElementById('sprinkles');
+    spr.innerHTML = '';
+    const colors = ['#fff','#ffe6d1','#ffd46a','#ffe0f0','#ffd0d8'];
+    for(let i=0;i<20;i++){
+      const d = document.createElement('div');
+      d.className='sprinkle';
+      d.style.left = (6 + Math.random()*88) + '%';
+      d.style.transform = `rotate(${Math.random()*360}deg)`;
+      d.style.top = (Math.random()*12) + 'px';
+      d.style.background = colors[Math.floor(Math.random()*colors.length)];
+      d.style.width = (4 + Math.random()*6)+'px';
+      spr.appendChild(d);
+    }
+  }
+
+  // candle flame toggles (show/hide)
+  function setFlames(on){
+    document.querySelectorAll('.candle .flame').forEach(f => {
+      f.style.display = on ? 'block' : 'none';
+    });
+  }
+
+  // Blow out animation: flicker then hide flames and confetti
+  function blowOut(){
+    // flicker then hide
+    const flames = Array.from(document.querySelectorAll('.candle .flame'));
+    let flickers = 6;
+    const flick = setInterval(()=>{
+      flames.forEach((f,i)=>{
+        f.style.opacity = (Math.random()*0.6 + 0.4);
+        f.style.transform = `translateY(${Math.random()*-4}px) scale(${0.92 + Math.random()*0.16})`;
+      });
+      flickers--;
+      if(flickers<=0){
+        clearInterval(flick);
+        setFlames(false);
+      }
+    },130);
+
+    launchConfetti();
+    document.getElementById('messageText').textContent = `aferin`;
+  }
+
+  // regenerate (light again)
+  function regen(){
+    setFlames(true);
+    document.getElementById('messageText').textContent = `dilek tut hirto`;
+  }
+
+  // ---- simple confetti canvas ----
+  const canvas = document.getElementById('confetti');
+  const ctx = canvas.getContext('2d');
+  let confettiPieces = [];
+  function resizeCanvas(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  function launchConfetti(){
+    confettiPieces = [];
+    const colors = ['#ff6b8c','#ffd46a','#85e3ff','#b0ffb3','#c78bff'];
+    for(let i=0;i<120;i++){
+      confettiPieces.push({
+        x: Math.random()*canvas.width,
+        y: -Math.random()*canvas.height,
+        size: 6 + Math.random()*10,
+        color: colors[Math.floor(Math.random()*colors.length)],
+        rot: Math.random()*360,
+        velX: (Math.random()-0.5)*4,
+        velY: 2 + Math.random()*6,
+        spin: (Math.random()-0.5)*10
+      });
+    }
+    runConfetti();
+  }
+
+  let confettiAnim;
+  function runConfetti(){
+    cancelAnimationFrame(confettiAnim);
+    function tick(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      confettiPieces.forEach((p,i)=>{
+        p.x += p.velX;
+        p.y += p.velY;
+        p.rot += p.spin*0.2;
+        ctx.save();
+        ctx.translate(p.x,p.y);
+        ctx.rotate(p.rot*Math.PI/180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+        ctx.restore();
+
+        // slow removal
+        if(p.y > canvas.height + 20) confettiPieces.splice(i,1);
+      });
+      if(confettiPieces.length>0) confettiAnim = requestAnimationFrame(tick);
+    }
+    tick();
+  }
+
+  // wire up buttons
+  document.getElementById('blowBtn').addEventListener('click', blowOut);
+  document.getElementById('regenBtn').addEventListener('click', regen);
+
+  // initial render
+  makeCandles(candleCount);
+  makeSprinkles();
+  setFlames(true);
+
+  // small accessibility: allow space to blow out
+  window.addEventListener('keydown', (e)=>{
+    if(e.code === 'Space'){ e.preventDefault(); blowOut(); }
+  });
+
+  // Auto-play small intro confetti shortly after load (gentle)
+  setTimeout(()=>{ launchConfetti(); setTimeout(()=>{ /* stop after a bit */ }, 2500); }, 900);
+
+</script>
+</body>
+</html>
